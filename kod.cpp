@@ -50,6 +50,7 @@ vector<vector<double>> matrixMultiply(const vector<vector<double>>& a, const vec
 }
 
 int main(int argc, char* argv[]) {
+    omp_set_num_threads(omp_get_max_threads());
     if (argc != 2) {
         cerr << "Usage: " << argv[0] << " <output.txt>" << endl;
         return 1;
@@ -66,7 +67,7 @@ int main(int argc, char* argv[]) {
     string mat1_filename = "mat1.txt";
     string mat2_filename = "mat2.txt";
 
-    for (int size = 10, i = 0; size <= 100; ++i) {
+    for (int size =10, i = 0; size <= 100; ++i) {
         vector<vector<double>> matrix1 = generateRandomMatrix(size);
         vector<vector<double>> matrix2 = generateRandomMatrix(size);
 
